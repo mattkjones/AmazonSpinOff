@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IQueryable<Book> 
+
+<header>
+    <h1>Welcome to my Amazon Spin-Off Website</h1>
+</header>
+
+@foreach (var x in Model)
+{
+    <div>
+        <h4>Title: @x.Title</h4>
+        <p>Author First Name: @x.AuthorFirst</p>
+        <p>Author Last Name: @x.AuthorLast</p>
+        <p>Publisher: @x.Publisher</p>
+        <p>ISBN: @x.ISBN</p>
+    </div>
+}
