@@ -25,6 +25,7 @@ namespace AmazonSpinOff.Models
                 //Bring in list of books given to us by Professor Hilton
                 context.Books.AddRange(
                     
+                    //Make sure each field is filled, as they are required. BookId will be populated automatically
                     new Book
                     {
                         Title = "Les Miserables",
