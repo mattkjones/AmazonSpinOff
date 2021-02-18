@@ -13,6 +13,7 @@ namespace AmazonSpinOff.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        //Set Repository
         private IAmazonRepository _repository;
 
         public HomeController(ILogger<HomeController> logger, IAmazonRepository repository)
@@ -23,6 +24,7 @@ namespace AmazonSpinOff.Controllers
 
         public IActionResult Index()
         {
+            //Use set repository in Index View
             return View(_repository.Books);
         }
 

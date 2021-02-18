@@ -12,16 +12,17 @@ namespace AmazonSpinOff.Models
     {
         public static void EnsurePopulated (IApplicationBuilder application)
         {
-            AmazonDbContext context = application.ApplicationServices.
-                CreateScope().ServiceProvider.GetRequiredService<AmazonDbContext>();
+            AmazonDbContext context = application.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<AmazonDbContext>();
 
+            //Make sure all migrations are pulled over
             if(context.Database.GetPendingMigrations().Any())
             {
                 context.Database.Migrate();
             }
 
-            if(context.Books.Any())
+            if(!context.Books.Any())
             {
+                //Bring in list of books given to us by Professor Hilton
                 context.Books.AddRange(
                     
                     new Book
@@ -145,6 +146,7 @@ namespace AmazonSpinOff.Models
                     }
                 );
 
+                //Make sure that the changes are saved!!
                 context.SaveChanges();
             }
         }

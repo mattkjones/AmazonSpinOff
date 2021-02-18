@@ -27,11 +27,13 @@ namespace AmazonSpinOff
         {
             services.AddControllersWithViews();
 
+            //Pull in this stuff, not really sure why but Professor Hilton says to do it
             services.AddDbContext<AmazonDbContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:AmazonSpinOff"]);
             });
 
+            //Pull in this stuff, not really sure why but Professor Hilton says to do it
             services.AddScoped<IAmazonRepository, EFAmazonRepository>();
         }
 
@@ -62,6 +64,7 @@ namespace AmazonSpinOff
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
+            //Put in here to help with pulling Seed Data
             SeedData.EnsurePopulated(app);
         }
     }
