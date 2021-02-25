@@ -27,5 +27,7 @@ namespace AmazonSpinOff.Models
         public string Category { get; set; }
         [Required(ErrorMessage = "Please enter a Price")]
         public double Price { get; set; }
+        [Required(ErrorMessage = "Please enter # of Pages")]
+        public int Pages { get; set; }
     }
 }
