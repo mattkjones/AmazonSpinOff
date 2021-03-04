@@ -11,12 +11,19 @@
 <!--Title for the page, using Bootstrap styling to make it look nice-->
 <body>
     <div class="bg-dark p-2 text-white text-center font-weight-bolder">
-        <span class="navebar-brand text-uppercase display-4">Welcome to my Amazon Spin-Off Website</span>
+        <span class="navebar-brand text-uppercase display-4">Welcome to my Amazon Spin-Off Website</span>  
     </div>
     <br />
-    <div>
-        <!--Render the Body (allow content to be filled from views)-->
-        @RenderBody()
+    <div class="row m-1">
+        <div class="col-4">
+            <vc:navigation-menu />
+        </div>
+        <div class="col-8">
+            <!--Summary sentence, complete with Bootstrap :) -->
+            <h4 class="text-center font-italic">Below is a list of books that I recommend:</h4>
+            <!--Render the Body (allow content to be filled from views)-->
+            @RenderBody()
+        </div>
     </div>
 </body>
 </html>

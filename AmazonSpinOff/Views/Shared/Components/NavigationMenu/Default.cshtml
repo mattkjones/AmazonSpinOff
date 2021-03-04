@@ -1,0 +1,20 @@
+﻿@model IEnumerable<string>
+
+<!--In this CSHTML file, we are building the navigation bar that will sort by category-->
+
+<!--Home button (will not change based on categories)-->
+<a class="btn btn-block btn-outline-dark" asp-action="Index" asp-controller="Home"
+   asp-route-category="">
+    Home
+</a>
+
+<!--Button for each category-->
+@foreach (string category in Model)
+{
+    <a class="btn btn-block @(category == ViewBag.SelectedCategory ? "btn-dark" : "btn-outline-dark")"
+       asp-action="Index" asp-controller="Home"
+       asp-route-category="@category"
+       asp-route-page="1">
+        @category
+    </a>
+}
