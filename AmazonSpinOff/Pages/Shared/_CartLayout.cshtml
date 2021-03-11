@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=content-width" />
+    <title>@ViewData["Title"] - AmazonSpinOff</title>
+    <!--Bring in Bootstrap, CSS, and Font-Awesome-->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="bg-dark p-2 text-white text-center font-weight-bolder">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col navbar-brand text-uppercase display-4">Welcome to my Amazon Spin-Off Website</div>
+                <div class="col-6 text-right"><vc:cart-summary /></div>
+            </div>
+        </div>
+    </div>
+    <div class="m-1 p-1">
+        @RenderBody()
+    </div>
+</body>
+
+</html>

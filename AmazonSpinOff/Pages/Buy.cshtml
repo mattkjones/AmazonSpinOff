@@ -1,0 +1,42 @@
+﻿@page
+
+@model AmazonSpinOff.Pages.BuyModel
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h2 class="text-center">Your Cart</h2>
+
+<!--Create a table to display cart-->
+<table class="table table-bordered">
+    <!--Table Headers-->
+    <thead class="thead-light">
+        <tr><th>Book</th><th>Quantity</th><th>Price</th><th>Subtotal</th><th>Remove From Cart?</th></tr>
+    </thead>
+    <tbody>
+        <!--Grab all items from the cart dynamically-->
+        @foreach(var line in Model.Cart.LineItems)
+        {
+            <tr>
+                <td class="text-left">@line.Book.Title</td><td class="text-center">@line.Quantity</td><td class="text-right">$@(line.Book.Price)</td><td class="text-right">@((line.Quantity * line.Book.Price).ToString("c"))</td>
+                <!--Remove from cart option-->
+                <td class="text-center">
+                    <form asp-page-handler="Remove" method="post">
+                        <input type="hidden" name="BookId" value="@line.Book.BookId" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-danger" >Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr><td colspan="3" class="text-right">Total:</td><td class="text-right">@Model.Cart.ComputeTotalSum().ToString("c")</td></tr>
+    </tfoot>
+</table>
+
+<!--Return to the previous page to allow customers to add more to the cart-->
+<div class="text-center">
+    <a class="btn btn-dark" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>
