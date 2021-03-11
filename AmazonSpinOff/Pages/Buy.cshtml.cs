@@ -42,7 +42,7 @@ namespace AmazonSpinOff.Pages
             Book book = repository.Books.FirstOrDefault(b => b.BookId == bookId);
 
             //Get cart or create new cart
-            Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            //Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
 
             //Add item
             Cart.AddItem(book, 1);
@@ -58,7 +58,7 @@ namespace AmazonSpinOff.Pages
         public IActionResult OnPostRemove (long bookId, string returnUrl)
         {
             //Get cart
-            Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            //Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
 
             //Remove item from cart
             Cart.RemoveLine(Cart.LineItems.First(cl =>

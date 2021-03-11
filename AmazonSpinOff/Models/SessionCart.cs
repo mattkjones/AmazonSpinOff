@@ -11,10 +11,10 @@ namespace AmazonSpinOff.Models
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?
                 .HttpContext.Session;
-            SessionCart cart = session?.GetJson<SessionCart>("Cart")
+            SessionCart Cart = session?.GetJson<SessionCart>("Cart")
                 ?? new SessionCart();
-            cart.Session = session;
-            return cart;
+            Cart.Session = session;
+            return Cart;
         }
         [JsonIgnore]
         public ISession Session { get; set; }
